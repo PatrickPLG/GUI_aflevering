@@ -20,7 +20,7 @@ class Pet:
 
 	# Lader tiden gå, hvor der bliver plusset 1 time til self.hour, plusset 20 til self.energy og plusset 10 til self.hunger
 	def setToNextHour(self):
-		self.hour = self.hour + 1
+		#self.hour = self.hour + 1
 		self.energy = self.energy + 20
 		self.hunger = self.hunger + 10
 
@@ -46,7 +46,7 @@ class Pet:
 				self.weekDayIndex = 0
 			self.hour = 6
 
-	
+	'''
 	#Tjekker om dyret dyr pga. forskellige årsager og restarter herefter spillet, med start værdier til variablerne
 	def checkDeath(self):
 		if (self.hunger >= 300):
@@ -89,8 +89,44 @@ class Pet:
 			self.hour = 6
 			self.energy = 100
 			self.hunger = 100
+			'''
+	def deathHungerOver(self):
+		if (self.hunger >= 300):
+			self.hour = 5
+			self.energy = 100
+			self.hunger = 100
+			return True
+		else:
+			return False
+	def deathEnergyOver(self):
+		if (self.energy >= 300):
+			self.hour = 6
+			self.energy = 100
+			self.hunger = 100
+			return True
+		else:
+			return False
+	def deathHungerUnder(self):
+		if (self.hunger <= 0):
+			self.hour = 6
+			self.energy = 100
+			self.hunger = 100
+			return True
+		else:
+			return False
+	def deathEnergyUnder(self):
+		if (self.energy <= 0):
+			self.hour = 6
+			self.energy = 100
+			self.hunger = 100
+			return True
+		else:
+			return False
 
-
+	def petName(self):
+		name = "Allo"
+		self.name = name
+		return self.name
 
 	#Printer self.hour, self.energy, self.hunger og weekDayName
 	def toString(self):
@@ -112,10 +148,10 @@ class Pet:
 		if choice == "Ingen ting" or choice == "ingen ting":
 			print("Du gjorde ingen ting")
 		elif choice == "Spise" or choice == "spise":
-			print("Du giver " + name + " mad")
+			print("Du giver " + self.name + " mad")
 			self.eat()
 		elif choice == "Gå" or choice == "gå":
-			print("Du går en tur med " + name )
+			print("Du går en tur med " + self.name )
 			self.walk()
 		elif choice == "":
 			print("Du gjorde ingen ting")
@@ -124,6 +160,10 @@ class Pet:
 Pets = [
 	Pet(0, 0, 0)
 ]
+
+
+
+'''
 
 #"Startmenuen", som bliver vist når programmet køres.
 for p in Pets:
@@ -168,3 +208,4 @@ for p in Pets:
 			print(p.toString())
 			p.question()
 			print("")
+'''
