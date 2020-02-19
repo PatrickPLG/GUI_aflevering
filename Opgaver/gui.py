@@ -40,7 +40,7 @@ class TestGUI(tk.Frame):
         energyLabel.config(font=("Comic Sans MS", 44))
         energyLabel.pack(side="left")
         self.text_energy = tk.Entry(self)
-        self.text_energy.insert(0, self.myPet.energy)+
+        self.text_energy.insert(0, self.myPet.energy)
         self.text_energy.pack(side="bottom")
 
         self.text_hunger = tk.Entry(self)
