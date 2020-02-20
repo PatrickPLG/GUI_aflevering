@@ -26,7 +26,7 @@ class TestGUI(tk.Frame):
         self.view_init()
 
     def controller_init(self):
-        print_button = tk.Button(self, text="Print")
+        print_button = tk.Button(self, text="Next")
         print_button.pack(side="bottom")
         print_button.bind("<ButtonRelease>", self.model_next_day)
         print_button.bind("<Return>", self.model_next_day)
