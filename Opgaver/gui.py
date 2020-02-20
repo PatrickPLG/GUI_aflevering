@@ -32,6 +32,12 @@ class TestGUI(tk.Frame):
         print_button.bind("<Return>", self.model_next_day)
         print_button.bind("<space>", self.model_next_day)
 
+        walk_button = tk.Button(self, text="Walk")
+        walk_button.pack(side="bottom")
+        walk_button.bind("<ButtonRelease>", self.walk)
+        walk_button.bind("<Return>", self.walk)
+        walk_button.bind("<space>", self.walk)
+
         infoText = ["Velkommen til spillet",
                     "I dette spil skal du passe på din egen hund",
                     "Du kan give den mad, gå ture med den eller vælge ikke at gøre noget",
@@ -75,6 +81,10 @@ class TestGUI(tk.Frame):
         self.text_hunger.insert(0, self.myPet.hunger)
         self.text_hunger.pack(side="bottom")
 
+    def walk(self, event):
+        self.myPet.walk()
+        self.model_next_day()
+
     def model_next_day(self, event):
         self.myDate.setToNextDate()
         self.myPet.setToNextHour()
@@ -91,7 +101,7 @@ class TestGUI(tk.Frame):
         # ------------
 
         self.view_update()
-        
+
     def view_update(self):
         self.text_input.delete(0, "end")
         self.text_input.insert(0, self.myDate.toString())
