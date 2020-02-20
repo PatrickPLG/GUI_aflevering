@@ -82,12 +82,13 @@ class TestGUI(tk.Frame):
         self.text_hunger = tk.Entry(self)
         self.text_hunger.insert(0, self.myPet.hunger)
         self.text_hunger.pack(side="bottom")
-
         pygame.mixer.init()
-        pygame.mixer.music.load('menumusic_16bit.wav')
-        pygame.mixer.music.play(-1)
-        #file = 'Menumusic.ogg'
-        #pygame.mixer.pre_init(44100, 16, 2, 4096)
+        pygame.mixer.Channel(0).play(pygame.mixer.Sound('menumusic.wav'))
+        
+        pygame.mixer.music.load('menumusic.wav')
+        pygame.mixer.music.play()
+        pygame.mixer.music.set_volume(1)
+
     def walk(self, event):
         self.myPet.walk()
         self.model_next_day()
