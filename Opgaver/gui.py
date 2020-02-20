@@ -5,6 +5,8 @@ import pet
 from tkinter import simpledialog
 from tkinter import messagebox
 import pygame
+from pygame import mixer
+
 
 
 class TestGUI(tk.Frame):
@@ -74,6 +76,12 @@ class TestGUI(tk.Frame):
         self.text_hunger = tk.Entry(self)
         self.text_hunger.insert(0, self.myPet.hunger)
         self.text_hunger.pack(side="bottom")
+
+        pygame.mixer.init()
+        pygame.mixer.music.load('menumusic_16bit.wav')
+        pygame.mixer.music.play(-1)
+        #file = 'Menumusic.ogg'
+        #pygame.mixer.pre_init(44100, 16, 2, 4096)
 
     def model_next_day(self, event):
         self.myDate.setToNextDate()
