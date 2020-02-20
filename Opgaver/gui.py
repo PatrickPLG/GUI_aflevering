@@ -28,6 +28,8 @@ class TestGUI(tk.Frame):
         self.view_init()
 
     def controller_init(self):
+
+        # Event handler #
         print_button = tk.Button(self, text="Next")
         print_button.pack(side="bottom")
         print_button.bind("<ButtonRelease>", self.model_next_day)
@@ -39,6 +41,10 @@ class TestGUI(tk.Frame):
         walk_button.bind("<ButtonRelease>", self.walk)
         walk_button.bind("<Return>", self.walk)
         walk_button.bind("<space>", self.walk)
+
+        volumeUPButton = tk.Button(self, text="+")
+        volumeUPButton.pack(side="bottom")
+        volumeUPButton.bind("<ButtonRelease>", self.volumeUP)
 
         infoText = ["Velkommen til spillet",
                     "I dette spil skal du passe på din egen hund",
@@ -58,12 +64,14 @@ class TestGUI(tk.Frame):
         self.myPet = pet.Pet(0, 0, 0)
 
     def view_init(self):
+
+        # UI elements #
         petNameLabel = tk.Label(self, text=self.name)
         petNameLabel.config(font=("Comic Sans MS", 44))
         petNameLabel.pack(side="top")
 
         dateLabel = tk.Label(self, text="Current Date")
-        dateLabel.config(font=("Comic Sans MS", 44))
+        dateLabel.config(font=("Comic Sans MS", 25))
         dateLabel.pack(side="top")
         self.text_input = tk.Entry(self)
         self.text_input.insert(0, self.myDate.toString())
@@ -74,7 +82,7 @@ class TestGUI(tk.Frame):
         energyLabel.pack(side="left")
         self.text_energy = tk.Entry(self)
         self.text_energy.insert(0, self.myPet.energy)
-        self.text_energy.pack(side="left", padx=44)
+        self.text_energy.pack(side="left")
 
         hungerLabel = tk.Label(self, text="Hunger:")
         hungerLabel.config(font=("Comic Sans MS", 25))
@@ -82,12 +90,18 @@ class TestGUI(tk.Frame):
         self.text_hunger = tk.Entry(self)
         self.text_hunger.insert(0, self.myPet.hunger)
         self.text_hunger.pack(side="bottom")
+
+        # Audio control #
+        gameVolume = 0.0
         pygame.mixer.init()
-        pygame.mixer.Channel(0).play(pygame.mixer.Sound('menumusic.wav'))
-        
-        pygame.mixer.music.load('menumusic.wav')
-        pygame.mixer.music.play()
-        pygame.mixer.music.set_volume(1)
+        pygame.mixer.Channel(0).play(pygame.mixer.Sound('menumusic.wav'), loops=-1)
+        pygame.mixer.music.set_volume(gameVolume)
+        #pygame.mixer.music.load('menumusic.wav')
+        #pygame.mixer.music.play(loops=-1)
+
+
+    def volumeUP(self, event):
+        gameVolume = gameVolume + 0.1
 
     def walk(self, event):
         self.myPet.walk()
@@ -97,7 +111,7 @@ class TestGUI(tk.Frame):
         self.myDate.setToNextDate()
         self.myPet.setToNextHour()
 
-        # Death checks
+        # Death checks #
         if (self.myPet.deathHungerOver() == True):
             messagebox.showwarning("Your pet died", self.name + " døde på grund af mangel på mad...")
         if (self.myPet.deathEnergyOver() == True):
@@ -119,7 +133,7 @@ class TestGUI(tk.Frame):
 
         self.text_hunger.delete(0, "end")
         self.text_hunger.insert(0, self.myPet.hunger)
-    
+
 
 root = tk.Tk()
 window = TestGUI(root)
