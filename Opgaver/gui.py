@@ -64,7 +64,7 @@ class TestGUI(tk.Frame):
 
     def model_init(self):
         self.myDate = date.Date(20, 5, 2020)
-        self.tidTest = TidTest.Date(1)
+        self.tidTest = TidTest.time(20)
         self.myPet = pet.Pet(0, 0, 0)
 
     def view_init(self):
@@ -80,7 +80,7 @@ class TestGUI(tk.Frame):
         timeLabel.config(font=("8514oem", 25))
         timeLabel.grid(row=3, column=1)
         self.text_hour = tk.Entry(self)
-        self.text_hour.insert(0, self.tidTest)
+        self.text_hour.insert(0, self.tidTest.toString())
         self.text_hour.grid(row=4, column=1)
 
         energyLabel = tk.Label(self, text="Energy:")
@@ -100,7 +100,7 @@ class TestGUI(tk.Frame):
         # UI elements #
         petNameLabel = tk.Label(self, text=self.name)
         petNameLabel.config(font=("8514oem", 25))
-        petNameLabel.place(x=350, y=50)
+        petNameLabel.grid(row=1, column=13)
 
         # Audio control #
         pygame.mixer.pre_init(frequency=44100, size=-16, channels=1, buffer=512)
@@ -119,31 +119,32 @@ class TestGUI(tk.Frame):
     def model_next_hour(self, event=None):
         self.tidTest.setToNextDate()
         self.myPet.setToNextHour()
-
-        if (self.tidTest > 21):
+        
+        if (self.tidTest.checkDayOverflow() == True):
             print("Virker")
             self.model_next_day()
+        
 
         # Death checks #
         if (self.myPet.deathHungerOver() == True):
             messagebox.showwarning("Your pet died", self.name + " døde på grund af mangel på mad...")
             self.myDate = date.Date(20, 5, 2020)
-            self.tidTest = TidTest.Date(1)
+            self.tidTest = TidTest.time(1)
             self.myPet = pet.Pet(0, 0, 0)
         if (self.myPet.deathEnergyOver() == True):
             messagebox.showwarning("Your pet died", self.name + " døde på grund af den ikke fik nok motion.")
             self.myDate = date.Date(20, 5, 2020)
-            self.tidTest = TidTest.Date(1)
+            self.tidTest = TidTest.time(1)
             self.myPet = pet.Pet(0, 0, 0)
         if (self.myPet.deathEnergyUnder() == True):
             messagebox.showwarning("Your pet died", self.name + " døde på grund af for meget motion")
             self.myDate = date.Date(20, 5, 2020)
-            self.tidTest = TidTest.Date(1)
+            self.tidTest = TidTest.time(1)
             self.myPet = pet.Pet(0, 0, 0)
         if (self.myPet.deathHungerUnder() == True):
             messagebox.showwarning("Your pet died", self.name + " døde på grund af du gav det for meget mad")
             self.myDate = date.Date(20, 5, 2020)
-            self.tidTest = TidTest.Date(1)
+            self.tidTest = TidTest.time(1)
             self.myPet = pet.Pet(0, 0, 0)
         # ------------
         self.view_update()
@@ -158,7 +159,7 @@ class TestGUI(tk.Frame):
         self.text_input.insert(0, self.myDate.toString())
 
         self.text_hour.delete(0, "end")
-        self.text_hour.insert(0, self.tidTest)
+        self.text_hour.insert(0, self.tidTest.toString())
 
         self.text_energy.delete(0, "end")
         self.text_energy.insert(0, self.myPet.energy)
