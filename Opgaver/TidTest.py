@@ -17,7 +17,7 @@ class time:
     # Kontrollerer for specialtilfælde hvor day
     # overskrider antal dage i måneden
     def checkDayOverflow(self):
-        if (self.hour > 21):
+        if (self.hour > 24):
             self.hour = 1
             return True
         else:

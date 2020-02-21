@@ -64,7 +64,7 @@ class TestGUI(tk.Frame):
 
     def model_init(self):
         self.myDate = date.Date(20, 5, 2020)
-        self.tidTest = TidTest.time(20)
+        self.tidTest = TidTest.time(1)
         self.myPet = pet.Pet(0, 0, 0)
 
     def view_init(self):
@@ -76,7 +76,7 @@ class TestGUI(tk.Frame):
         self.text_input.insert(0, self.myDate.toString())
         self.text_input.grid(row=2, column=1)
 
-        timeLabel = tk.Label(self, text="Current Time")
+        timeLabel = tk.Label(self, text="Current Hour")
         timeLabel.config(font=("8514oem", 25))
         timeLabel.grid(row=3, column=1)
         self.text_hour = tk.Entry(self)
@@ -121,7 +121,6 @@ class TestGUI(tk.Frame):
         self.myPet.setToNextHour()
         
         if (self.tidTest.checkDayOverflow() == True):
-            print("Virker")
             self.model_next_day()
         
 
