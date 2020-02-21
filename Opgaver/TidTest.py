@@ -1,5 +1,5 @@
 # En instans repræsenterer en dato.
-class Date:
+class time:
     # Konstruktør til at oprette en dato
     def __init__(self, hour):
         # Variable til repræsentation af dato
@@ -12,7 +12,7 @@ class Date:
 
     # Returnerer datoen som en streng
     def toString(self):
-        return self.hour
+        return str(self.hour)
 
     # Kontrollerer for specialtilfælde hvor day
     # overskrider antal dage i måneden
