@@ -12,7 +12,7 @@ class Date:
 
     # Returnerer datoen som en streng
     def toString(self):
-        return str(self.hour)
+        return self.hour
 
     # Kontrollerer for specialtilfælde hvor day
     # overskrider antal dage i måneden
