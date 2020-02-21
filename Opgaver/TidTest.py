@@ -19,3 +19,6 @@ class time:
     def checkDayOverflow(self):
         if (self.hour > 21):
             self.hour = 1
+            return True
+		else:
+		    return False
