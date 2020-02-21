@@ -8,7 +8,7 @@ class time:
     # Ændrer datoen til næste dag
     def setToNextDate(self):
         self.hour = self.hour + 1
-        self.checkDayOverflow()
+        #self.checkDayOverflow()
 
     # Returnerer datoen som en streng
     def toString(self):
