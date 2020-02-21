@@ -20,5 +20,5 @@ class time:
         if (self.hour > 21):
             self.hour = 1
             return True
-		else:
-		    return False
+        else:
+            return False
