@@ -1,4 +1,4 @@
-# brugergrænseflader_aflevering
+# GUI_aflevering
 # Makers of this Github project
 
 Nicklas | Patrick
@@ -32,3 +32,4 @@ petnavngivning og informations pop-up implementering
 opsætning og importering af UI elementer 
 
 # [Github Link](https://github.com/PatrickPLG/GUI_aflevering)
+# [Download Programmet](https://github.com/PatrickPLG/GUI_aflevering/blob/master/Opgaver/petGUI.zip)
