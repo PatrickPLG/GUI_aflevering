@@ -1,4 +1,5 @@
 {
     "python.linting.pycodestyleEnabled": true,
-    "python.linting.enabled": true
+    "python.linting.enabled": true,
+    "python.pythonPath": "C:\\Program Files (x86)\\Python37-32\\python.exe"
 }
