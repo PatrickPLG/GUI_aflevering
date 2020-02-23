@@ -3,6 +3,7 @@ import tkinter as tk
 import date
 import pet
 import TidTest
+import os
 from tkinter import simpledialog
 from tkinter import PhotoImage, messagebox
 import pygame
@@ -73,8 +74,9 @@ class petGUI(tk.Frame):
 
     def view_init(self):
         # frame switching delay must be 0.1s
-
-        dogPhoto = tk.PhotoImage(file=self.gif)
+        
+        img = "Assets/Dog graphics/Dog4.gif"
+        dogPhoto = tk.PhotoImage(file=frameUpdater.frames.dogFrameUpdater())
 
         quitButton = tk.Label(image=dogPhoto, )
         quitButton.image = dogPhoto
