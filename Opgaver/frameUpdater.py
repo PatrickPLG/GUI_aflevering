@@ -10,6 +10,6 @@ class frames:
         Frames = len(dogFrames)
         while gameRunning == True:
             Frames = Frames + 1
-            time.sleep(1)
+            Frames.after(1000)
             if (Frames == 5):
                 Frames = 0
