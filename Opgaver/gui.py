@@ -74,13 +74,14 @@ class petGUI(tk.Frame):
 
     def view_init(self):
         # frame switching delay must be 0.1s
-        
+        while gameRunning == True:
+            dogPhoto = tk.PhotoImage(file=frameUpdater.frames.dogFrameUpdater())
+            quitButton = tk.Label(image=dogPhoto, )
+            quitButton.image = dogPhoto
+            quitButton.place(x=200, y=200)
+            quitButton.after(1000, frameUpdater.frames.dogFrameUpdater())
         img = "Assets/Dog graphics/Dog4.gif"
-        dogPhoto = tk.PhotoImage(file=frameUpdater.frames.dogFrameUpdater())
-
-        quitButton = tk.Label(image=dogPhoto, )
-        quitButton.image = dogPhoto
-        quitButton.place(x=200, y=200)
+ 
 
         dateLabel = tk.Label(self, text="Current Date")
         dateLabel.config(font=("Fixedsys", 25))
