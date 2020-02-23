@@ -1,17 +1,16 @@
-
+# Library and file imports
 import tkinter as tk
 import date
 import pet
 import TidTest
 from tkinter import simpledialog
-from tkinter import messagebox
+from tkinter import PhotoImage, messagebox
 import pygame
 from pygame import mixer
-#from PIL import ImageTK, Image
+import time
+import frameUpdater
 
-
-
-class TestGUI(tk.Frame):
+class petGUI(tk.Frame):
     def __init__(self, master):
         super().__init__(master)
         self.main_window = master
@@ -50,6 +49,7 @@ class TestGUI(tk.Frame):
         eat_button.bind("<Return>", self.eat)
         eat_button.bind("<space>", self.eat)
 
+
         infoText = ["Velkommen til spillet",
                     "I dette spil skal du passe på din egen hund",
                     "Du kan give den mad, gå ture med den eller vælge ikke at gøre noget",
@@ -63,12 +63,22 @@ class TestGUI(tk.Frame):
         self.startInfo = messagebox.showinfo("Information about game",
                                              "\n".join(infoText))
 
+            
+
     def model_init(self):
         self.myDate = date.Date(20, 5, 2020)
         self.tidTest = TidTest.time(1)
         self.myPet = pet.Pet(0, 0, 0)
+        self.gif = frameUpdater.frames()
 
     def view_init(self):
+        # frame switching delay must be 0.1s
+
+        dogPhoto = tk.PhotoImage(file=self.gif)
+
+        quitButton = tk.Label(image=dogPhoto, )
+        quitButton.image = dogPhoto
+        quitButton.place(x=200, y=200)
 
         dateLabel = tk.Label(self, text="Current Date")
         dateLabel.config(font=("Fixedsys", 25))
@@ -103,17 +113,10 @@ class TestGUI(tk.Frame):
         petNameLabel.config(font=("Fixedsys", 25))
         petNameLabel.grid(row=1, column=13)
 
-        quitIcon = tk.PhotoImage(file=r"Dog.gif")
-        quitButton = tk.Button(self, text="Quit", image=quitIcon)
-        quitButton.grid(row=15, column=15)
-
-        #image = ImageTK.PhotoImage(Image.open("Dog.gif"))
-        #self.create_image(0,0,anchor=NW, image= image)
-
         # Audio control #
         pygame.mixer.pre_init(frequency=44100, size=-16, channels=1, buffer=512)
         pygame.mixer.init()
-        pygame.mixer.Channel(0).play(pygame.mixer.Sound('menumusic.wav'), loops=-1)
+        pygame.mixer.Channel(0).play(pygame.mixer.Sound('Assets/menumusic.wav'), loops=-1)
         pygame.mixer.music.set_volume(0.1)
 
     def walk(self, event):
@@ -151,7 +154,8 @@ class TestGUI(tk.Frame):
             self.myDate = date.Date(20, 5, 2020)
             self.tidTest = TidTest.time(1)
             self.myPet = pet.Pet(0, 0, 0)
-        # ------------
+        
+        # Runs view_update()
         self.view_update()
 
     def model_next_day(self, event=None):
@@ -174,6 +178,6 @@ class TestGUI(tk.Frame):
 
 
 root = tk.Tk()
-window = TestGUI(root)
+window = petGUI(root)
 root.geometry('800x500')
 window.mainloop()

@@ -10,3 +10,5 @@ Xmas tek Chip|Mr. Frog
 - [x] Import Tamagotchi program
 - [x] Make Terminal commands into GUI buttons
 - [ ] Incorporate minigames into the tamagotchi program
+
+# 
