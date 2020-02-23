@@ -6,8 +6,9 @@ Nicklas | Patrick
 ![Nicklas](https://avatars2.githubusercontent.com/u/44356711?s=64&v=64)|![Patrick](https://avatars0.githubusercontent.com/u/44425816?s=64&v=64)|
 Xmas tek Chip|Mr. Frog
 # Krav
- | Input        | Man klikker på walk, eat eller next|
+| Punkt i test  | Information i processen | 
 | ------------- |:-------------:|
+| Input         | Man klikker på walk, eat eller next|
 | Forudsætninger| At walk og eat variablerne ændres |
 | Procedure     | Når man klikker på walk eller eat, vil energy eller hunger gå ned. Når man klikker på next vil begge values gå op     |
 | Resultat | Varablerne er nu enten minusset eller plusset |
@@ -29,7 +30,7 @@ Death checks blev lavet
 Import af pygame modulet og små ændringer til layout af UI'en
 petnavngivning og informations pop-up implementering
 - 23/2-2020:
-opsætning og importering af UI elementer 
+Opsætning og importering af UI elementer 
 
 # [Github Link](https://github.com/PatrickPLG/GUI_aflevering)
 # [Download Programmet](https://github.com/PatrickPLG/GUI_aflevering/blob/master/Opgaver/petGUI.zip)
