@@ -9,7 +9,7 @@ from tkinter import PhotoImage, messagebox
 import pygame
 from pygame import mixer
 import time
-import frameUpdater
+from frameUpdater import *
 
 class petGUI(tk.Frame):
     def __init__(self, master):
@@ -70,17 +70,30 @@ class petGUI(tk.Frame):
         self.myDate = date.Date(20, 5, 2020)
         self.tidTest = TidTest.time(1)
         self.myPet = pet.Pet(0, 0, 0)
-        self.gif = frameUpdater.frames()
-
+    '''
+    def frameUpdater(self):
+        dogFrames = ["Assets/Dog graphics/Dog1.gif",
+                     "Assets/Dog graphics/Dog2.gif",
+                     "Assets/Dog graphics/Dog3.gif",
+                     "Assets/Dog graphics/Dog4.gif"]
+            Frames = len(dogFrames)
+            Frames = Frames + 1
+            if (Frames == 5):
+                Frames = 0
+    '''
     def view_init(self):
         # frame switching delay must be 0.1s
-        while gameRunning == True:
-            dogPhoto = tk.PhotoImage(file=frameUpdater.frames.dogFrameUpdater())
+        '''
+            dogPhoto = tk.PhotoImage(file=dogFrames[Frames])
             quitButton = tk.Label(image=dogPhoto, )
             quitButton.image = dogPhoto
             quitButton.place(x=200, y=200)
-            quitButton.after(1000, frameUpdater.frames.dogFrameUpdater())
+        quitButton.after(1000, frameUpdater()
         img = "Assets/Dog graphics/Dog4.gif"
+        '''
+        lbl_with_my_gif = AnimatedGif(root, 'Assets/Background graphics/original.gif', 0.04)  # (tkinter.parent, filename, delay between frames)
+        lbl_with_my_gif.place(x=200, y=200)  # Packing the label with the animated gif (grid works just as well)
+        lbl_with_my_gif.start_thread()  # Shows gif at first frame and we are ready to go
  
 
         dateLabel = tk.Label(self, text="Current Date")
