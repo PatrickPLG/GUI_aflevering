@@ -7,6 +7,7 @@ from tkinter import simpledialog
 from tkinter import messagebox
 import pygame
 from pygame import mixer
+#from PIL import ImageTK, Image
 
 
 
@@ -70,28 +71,28 @@ class TestGUI(tk.Frame):
     def view_init(self):
 
         dateLabel = tk.Label(self, text="Current Date")
-        dateLabel.config(font=("8514oem", 25))
+        dateLabel.config(font=("Fixedsys", 25))
         dateLabel.grid(row=1, column=1)
         self.text_input = tk.Entry(self)
         self.text_input.insert(0, self.myDate.toString())
         self.text_input.grid(row=2, column=1)
 
         timeLabel = tk.Label(self, text="Current Hour")
-        timeLabel.config(font=("8514oem", 25))
+        timeLabel.config(font=("Fixedsys", 25))
         timeLabel.grid(row=3, column=1)
         self.text_hour = tk.Entry(self)
         self.text_hour.insert(0, self.tidTest.toString())
         self.text_hour.grid(row=4, column=1)
 
         energyLabel = tk.Label(self, text="Energy:")
-        energyLabel.config(font=("8514oem", 25))
+        energyLabel.config(font=("Fixedsys", 25))
         energyLabel.grid(row=5, column=1)
         self.text_energy = tk.Entry(self)
         self.text_energy.insert(0, self.myPet.energy)
         self.text_energy.grid(row=6, column=1)
 
         hungerLabel = tk.Label(self, text="Hunger:")
-        hungerLabel.config(font=("8514oem", 25))
+        hungerLabel.config(font=("Fixedsys", 25))
         hungerLabel.grid(row=7, column=1)
         self.text_hunger = tk.Entry(self)
         self.text_hunger.insert(0, self.myPet.hunger)
@@ -99,8 +100,15 @@ class TestGUI(tk.Frame):
 
         # UI elements #
         petNameLabel = tk.Label(self, text=self.name)
-        petNameLabel.config(font=("8514oem", 25))
+        petNameLabel.config(font=("Fixedsys", 25))
         petNameLabel.grid(row=1, column=13)
+
+        quitIcon = tk.PhotoImage(file=r"Dog.gif")
+        quitButton = tk.Button(self, text="Quit", image=quitIcon)
+        quitButton.grid(row=15, column=15)
+
+        #image = ImageTK.PhotoImage(Image.open("Dog.gif"))
+        #self.create_image(0,0,anchor=NW, image= image)
 
         # Audio control #
         pygame.mixer.pre_init(frequency=44100, size=-16, channels=1, buffer=512)
@@ -119,10 +127,8 @@ class TestGUI(tk.Frame):
     def model_next_hour(self, event=None):
         self.tidTest.setToNextDate()
         self.myPet.setToNextHour()
-        
         if (self.tidTest.checkDayOverflow() == True):
             self.model_next_day()
-        
 
         # Death checks #
         if (self.myPet.deathHungerOver() == True):

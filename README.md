@@ -7,6 +7,6 @@ Nicklas | Patrick
 Xmas tek Chip|Mr. Frog
 
 # To-do list
-- [ ] Import Tamagotchi program
-- [ ] Make Terminal commands into GUI buttons
+- [x] Import Tamagotchi program
+- [x] Make Terminal commands into GUI buttons
 - [ ] Incorporate minigames into the tamagotchi program
