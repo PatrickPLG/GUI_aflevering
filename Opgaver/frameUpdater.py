@@ -1,7 +1,7 @@
 import time
 
 class frames:
-    def dogFrameUpdater(self):
+    def dogFrameUpdater():
         gameRunning = True
         dogFrames = ["Assets/Dog graphics/Dog1.gif",
                      "Assets/Dog graphics/Dog2.gif",
